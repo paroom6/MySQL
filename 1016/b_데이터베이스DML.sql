@@ -1,0 +1,69 @@
+### 데이터베이스 DML ###
+# b_데이터베이스DML
+
+-- DML(Data Manipulation Language)
+-- : 데이터 관리 언어
+-- : 데이터베이스 내의 데이터를 조회, 삽입, 수정, 삭제 기능
+
+-- 1. select
+-- : 데이터를 조회하기 위한 SQL 명령어
+-- 기본구조
+-- select 컬럼명1, 컬럼명2, ...
+-- from 테이블명
+-- where 조건(condition)
+
+-- : 전체 테이블의 컬럼을 모두 조회할 경우 select 키워드 뒤에
+--   별표(*)를 사용하여 조회
+-- : select문 뒤에 작성되는 컬럼명 순서로 조회
+
+-- 실습코드 --
+use company;
+select employee_age, employee_name
+from human_resources;
+
+-- 2. insert
+-- : 테이블에 새로운 데이터를 삽입하기 위한 SQL 명령어
+-- 기본 구조
+-- insert into 테이블명 (컬럼명1, 컬럼명2, ...)
+-- values (데이터1, 데이터2, ...)
+
+-- : 컬럼명 지정하지 않을 경우 
+--   전체 컬럼에 데이터 입력
+
+insert into human_resources 
+(employee_number, employee_name, employee_age, employee_email, employee_score)
+values (4, '이주헌', 60, 'xyz', 90);
+
+-- : 테이블명, 열 이름(컬럼명) - 따옴표 지정 없이 작성 가능
+-- : 데이터값 - 문자열의 경우 따옴표를 붙여서 작성
+-- : char, varchar, date 형식
+--   따옴표(큰, 작은)로 묶어주어야 한다!
+
+-- 3. update
+-- : 테이블의 내용 수정하기 위한 SQL 명령어
+-- 기본 구조
+-- update 테이블명
+-- set 컬럼명1 = 값1, 컬러명2 = 값2, ...
+-- where 조건(condition)
+
+update human_resources
+set employee_score = 80;
+
+-- 4. delete 
+-- : 테이블의 데이터를 삭제하기 위한 SQL 명령어
+-- 기본 구조
+-- delete from 테이블명
+-- where 조건(condition)
+
+-- 전체 테이블 데이터 삭제의 경우 where 조건식을 생략 작성
+delete from `human_resources`;
+
+### DBMS MySQL Workbench 백틱, 따옴표 사용법 ###
+-- 백틱(`)
+-- : 데이터베이스명, 테이블명, 열 이름과 같은 
+--   '식별자'를 둘러싸는 기호
+-- : 공백이나, 특수문자를 포함할 때 주로 사용
+
+-- 따옴표('', "")
+-- : 문자열 값을 나타내기 위해 사용
+-- : 표준 SQL에서는 싱글 따음표를 사용 권장
